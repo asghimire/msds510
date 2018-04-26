@@ -7,6 +7,7 @@ for index in range(0,len(top_avengers)):
     print('                      '
           '                       ')
     for key in top_avengers[index]:
+        top_avengers[index]['Name/Alias']=top_avengers[index].pop('Name/Alias')
         print('*', key,':', top_avengers[index][key])
     print('-----------------------'
           '-----------------------')
