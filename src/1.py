@@ -1,40 +1,24 @@
 import csv
-from time import strptime
-import re
-# record['is_current'] = record['is_current']=='YES'
-# record['Year']= int(record['Year'])
-# record['Years since joining']= int(record['Years since joining'])
-# record['Years since joining'] = 2018 - record['Year']
-from time import strptime
-
-with open(r'C:\msds510\data\processed\avengers_processed1.csv', 'r') as dr:
-    dr = csv.DictReader(dr)
-    for row in dr:
-        print(row)
-        # new_D['first_name'], new_D['last_name'] = row['name_alias'].split(' ')
-    row['month_joined'] = row['full_reserve_avengers_intro']
-    each_month = row['month_joined']
-    each_month = re.sub("[^a-zA-Z]+", "", each_month)
-    each_month = (strptime(each_month, '%b').tm_mon)
-
-print(dict(row))
-
-record = [dict(year='1988', intro='Jun-88'),
-          dict(year='1989', intro='may-89'),
-          dict(year='2005', intro='5-may'),
-          dict(year='2013', intro='13-Nov'),
-          dict(year='2014', intro='14-Jan'),
-          ]
 
 
-# print(record)
-def get_month(intro_str):
-    intro = []
-    for each_record in record:
-        intro_str = each_record['intro']
-        intro_str = re.sub("[^a-zA-Z]+", "", intro_str)
-        intro_str = (strptime(intro_str, '%b').tm_mon)
-        intro.append(intro_str)
-    return intro
+def get_top_ten_avengers(inputfile):
+    file = open(inputfile, 'r')
+    rows = file.readlines()
+    for line in rows:
+     print(type(line))
 
-# print(get_month(record))
+    # list_r = []
+    # for row in cr:
+    #     data = (dict(row))
+    #     data['appearances'] = int(data['appearances'])
+    #     list_r.append(data)
+    # s = sorted(list_r, key=lambda d: d['appearances'], reverse=True)
+    # top_ten_avengers = s[:10]
+    # new_top_ten_record = []
+    # for i in top_ten_avengers:
+    #     desired_fields = ['url', 'name_alias', 'appearances', 'year', 'years_since_joining', 'notes']
+    #     temp = dict((k, i[k]) for k in desired_fields if k in i)
+    #     new_top_ten_record.append(temp)
+    # return (new_top_ten_record)
+if __name__ == "__main__":
+    print(get_top_ten_avengers(r'C:\msds510\data\processed\avengers_processed.csv'))
