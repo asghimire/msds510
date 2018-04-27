@@ -10,7 +10,6 @@ def get_processed_csv(inputfile, outputfile):
         # print(header)
         list_r = []
         for row in reader:
-            # row['month_joined'] = row['Full/Reserve Avengers Intro']
             data = (dict(row))
             list_r.append(data)
 
@@ -18,7 +17,9 @@ def get_processed_csv(inputfile, outputfile):
     for each_field in header:
         formatted_header = each_field.lower().replace('/', '_').replace(' ', '_').strip('?').strip('\n')
         fieldnames.append(formatted_header)
-        #print(fieldnames)
+    fieldnames.append('month_joined')
+    # intro_str = re.sub("[^a-zA-Z]+", "", intro_str)
+    # intro_str = (strptime(intro_str, '%b').tm_mon)
 
     for item in list_r:
         item['url'] = item.pop('URL')
@@ -63,18 +64,19 @@ def get_processed_csv(inputfile, outputfile):
         # month = re.sub("[^a-zA-Z]+", "",item['month_joined'] )
         # item['month_joined'] = (strptime(month,'%b').tm_mon)
         # print(item)
-
+    for item in list_r:
+        item['month_joined']= item['full_reserve_avengers_intro']
+        re.sub("[^a-zA-Z]+", "", item['month_joined'])
 
     with open(outputfile, 'w', encoding='utf-8', newline="") as csv_file_w:
          writer = csv.DictWriter(csv_file_w, fieldnames=fieldnames)
          writer.writeheader()
          for each_row in list_r:
             writer.writerow(each_row)
-    for i in list_r:
-        print(i)
+
 
 if __name__ == "__main__":
     get_processed_csv(r'C:\msds510\data\raw\avengers.csv',
-                  r'C:\msds510\data\processed\avengers_processed1.csv')
+                  r'C:\msds510\data\processed\avengers_processed.csv')
 
 
