@@ -1,24 +1,21 @@
-import csv
+import re
+import datetime
+import calendar
+from time import strptime
 
+d = {'probationary_introl': 'Jul-03'}
+month = re.sub("[^a-zA-Z]+", "", d['probationary_introl'])
+month = (strptime(month, '%b').tm_mon)
+temp_year = int(re.sub("\D", "", d['probationary_introl']))
+if 59 <= temp_year <= 99:
+    year_s = '19' + str(temp_year)
 
-def get_top_ten_avengers(inputfile):
-    file = open(inputfile, 'r')
-    rows = file.readlines()
-    for line in rows:
-     print(type(line))
+if 00 <= temp_year < 10:
+        year_s = 20 + (temp_year)
+else:
+ year_s = 20 + str(temp_year)
 
-    # list_r = []
-    # for row in cr:
-    #     data = (dict(row))
-    #     data['appearances'] = int(data['appearances'])
-    #     list_r.append(data)
-    # s = sorted(list_r, key=lambda d: d['appearances'], reverse=True)
-    # top_ten_avengers = s[:10]
-    # new_top_ten_record = []
-    # for i in top_ten_avengers:
-    #     desired_fields = ['url', 'name_alias', 'appearances', 'year', 'years_since_joining', 'notes']
-    #     temp = dict((k, i[k]) for k in desired_fields if k in i)
-    #     new_top_ten_record.append(temp)
-    # return (new_top_ten_record)
-if __name__ == "__main__":
-    print(get_top_ten_avengers(r'C:\msds510\data\processed\avengers_processed.csv'))
+year = int(year_s)
+#print(datetime.date(year, month, 1))
+month_int= {v: k for k,v in enumerate(calendar.month_abbr)}
+print(month_int['Jul'])

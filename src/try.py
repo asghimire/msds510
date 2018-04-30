@@ -13,6 +13,7 @@ def get_processed_csv(inputfile, outputfile):
             data = (dict(row))
             list_r.append(data)
 
+
     fieldnames = []
     for each_field in header:
         formatted_header = each_field.lower().replace('/', '_').replace(' ', '_').strip('?').strip('\n')
@@ -64,11 +65,19 @@ def get_processed_csv(inputfile, outputfile):
         # item['month_joined'] = (strptime(month,'%b').tm_mon)
         # print(item)
     for item in list_r:
-        item['month_joined']= item['full_reserve_avengers_intro']
-        item['month_joined'] = re.sub("[^a-zA-Z]+", "", item['month_joined'])
-        item['month_joined'] = (strptime(item['month_joined'], '%b').tm_mon)
-        list_r.append(item['month_joined'])
-        print(item)
+         item['month_joined']= item['full_reserve_avengers_intro']
+    #     item['month_joined'] = re.sub("[^a-zA-Z]+", "", item['month_joined'])
+    #     item['month_joined'] = (strptime(item['month_joined'], '%b').tm_mon)
+    #     list_r.append(item['month_joined'])
+         for key in item:
+            if key == 'month_joined':
+                new_value = re.sub("[^a-zA-Z]+", "", item[key])
+                new_value = (strptime(new_value, '%b').tm_mon)
+                item['month_joined'] = new_value
+                item.update(new_value)
+
+    print(list_r)
+    print(item)
 
     with open(outputfile, 'w', encoding='utf-8', newline="") as csv_file_w:
          writer = csv.DictWriter(csv_file_w, fieldnames=fieldnames)
@@ -79,6 +88,6 @@ def get_processed_csv(inputfile, outputfile):
 
 if __name__ == "__main__":
     get_processed_csv(r'C:\msds510\data\raw\avengers.csv',
-                  r'C:\msds510\data\processed\avengers_processed.csv')
+                  r'C:\msds510\data\processed\avengers_processed1.csv')
 
 
