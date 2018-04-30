@@ -1,9 +1,8 @@
 import csv
-from time import strptime
-import re
 
 
 def get_processed_csv(inputfile, outputfile):
+
     with open(inputfile, 'r') as csv_file:
         reader = csv.DictReader(csv_file)
         header = reader.fieldnames
@@ -27,7 +26,8 @@ def get_processed_csv(inputfile, outputfile):
         item['current'] = item.pop('Current?')
         item['gender'] = item.pop('Gender')
         item['probationary_introl'] = item.pop('Probationary Introl')
-        item['full_reserve_avengers_intro'] = item.pop('Full/Reserve Avengers Intro')
+        item['full_reserve_avengers_intro'] = \
+            item.pop('Full/Reserve Avengers Intro')
         item['year'] = item.pop('Year')
         item['years_since_joining'] = item.pop('Years since joining')
         item['honorary'] = item.pop('Honorary')
@@ -58,13 +58,6 @@ def get_processed_csv(inputfile, outputfile):
         item['return4'] = item['return4'] == 'YES'
         item['death5'] = item['death5'] == 'YES'
         item['return5'] = item['return5'] == 'YES'
-
-    for item in list_r:
-        item['month_joined'] = item['full_reserve_avengers_intro']
-        item['month_joined'] = re.sub("[^a-zA-Z]+", "", item['month_joined'])
-        item['month_joined'] = (strptime(item['month_joined'], '%b').tm_mon)
-        list_r.append(item['month_joined'])
-        print(item)
 
     with open(outputfile, 'w', encoding='utf-8', newline="") as csv_file_w:
         writer = csv.DictWriter(csv_file_w, fieldnames=fieldnames)

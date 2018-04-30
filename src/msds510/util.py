@@ -2,6 +2,7 @@ import csv
 
 
 def get_top_ten_avengers(inputfile):
+
     with open(inputfile, 'r') as csv_file:
         cr = csv.DictReader(csv_file)
         list_r = []
@@ -21,7 +22,7 @@ def get_top_ten_avengers(inputfile):
                               'notes']
             temp = dict((k, i[k]) for k in desired_fields if k in i)
             new_top_ten_record.append(temp)
-            return (new_top_ten_record)
+        return (new_top_ten_record)
 
 
 top_avengers = get_top_ten_avengers(
@@ -29,6 +30,7 @@ top_avengers = get_top_ten_avengers(
 
 
 def print_report(filepath):
+
     for i in range(0, len(top_avengers)):
         print('#', (i + 1), '.', top_avengers[i]['name_alias'])
         print()
