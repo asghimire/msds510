@@ -1,9 +1,12 @@
+"""The process_csv module has all the codes to process a csv file"""
 import csv
 from time import strptime
 import re
 
 
 def get_processed_csv(inputfile, outputfile):
+    """ The "get_processed_csv" function processess the raw csv file. It changes the fieldnames
+     into python friendly names. Uses date and time function to change data and bool for Yes/No values. It does other processing also"""
     with open(inputfile, 'r') as csv_file:
         reader = csv.DictReader(csv_file)
         header = reader.fieldnames
@@ -60,15 +63,12 @@ def get_processed_csv(inputfile, outputfile):
         item['return4'] =  item['return4']=='YES'
         item['death5'] =  item['death5']=='YES'
         item['return5'] =  item['return5']=='YES'
-        # month = re.sub("[^a-zA-Z]+", "",item['month_joined'] )
-        # item['month_joined'] = (strptime(month,'%b').tm_mon)
-        # print(item)
+
     for item in list_r:
         item['month_joined']= item['full_reserve_avengers_intro']
         item['month_joined'] = re.sub("[^a-zA-Z]+", "", item['month_joined'])
         item['month_joined'] = (strptime(item['month_joined'], '%b').tm_mon)
         list_r.append(item['month_joined'])
-        print(item)
 
     with open(outputfile, 'w', encoding='utf-8', newline="") as csv_file_w:
          writer = csv.DictWriter(csv_file_w, fieldnames=fieldnames)
@@ -78,7 +78,7 @@ def get_processed_csv(inputfile, outputfile):
 
 
 if __name__ == "__main__":
-    get_processed_csv(r'C:\msds510\data\raw\avengers.csv',
-                  r'C:\msds510\data\processed\avengers_processed.csv')
+    get_processed_csv(r'C:\msds510-midterm\data\raw\avengers.csv',
+                  r'C:\msds510-midterm\data\processed\avengers_processed.csv')
 
-
+print(__doc__)

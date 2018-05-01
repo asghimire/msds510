@@ -1,5 +1,9 @@
+"""The util module has all the helper fucntions to work with dates and bool and stuff"""
 import csv
+
+
 def get_top_ten_avengers(inputfile):
+ """The "get_top_ten_avengers" function returns the record for top ten avengers by appearances"""
  with open(inputfile, 'r') as csv_file:
     cr = csv.DictReader(csv_file)
     list_r = []
@@ -19,10 +23,11 @@ def get_top_ten_avengers(inputfile):
 
  top_avengers = get_top_ten_avengers(r'C:\msds510\data\processed\avengers_processed.csv')
 
+
 def print_report(filepath):
- # if __name__ == "__main__":
- top_avengers = get_top_ten_avengers(filepath)
- for i in range(0, len(top_avengers)):
+    """The "print_report" function prints the top ten avengers with the desired fields that we provided."""
+    top_avengers = get_top_ten_avengers(filepath)
+    for i in range(0, len(top_avengers)):
      print('#', (i + 1), '.', top_avengers[i]['name_alias'])
      print()
      print('*', 'Number of Appearances', ':', top_avengers[i]['appearances'])
