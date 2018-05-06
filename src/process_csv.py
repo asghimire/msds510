@@ -1,9 +1,8 @@
 import csv
-from time import strptime
-import re
 
 
 def get_processed_csv(inputfile, outputfile):
+
     with open(inputfile, 'r') as csv_file:
         reader = csv.DictReader(csv_file)
         header = reader.fieldnames
@@ -14,6 +13,7 @@ def get_processed_csv(inputfile, outputfile):
 
     fieldnames = []
     for each_field in header:
+
         formatted_header = each_field.lower().\
             replace('/', '_').replace(' ', '_').\
             strip('?').strip('\n')
@@ -27,7 +27,8 @@ def get_processed_csv(inputfile, outputfile):
         item['current'] = item.pop('Current?')
         item['gender'] = item.pop('Gender')
         item['probationary_introl'] = item.pop('Probationary Introl')
-        item['full_reserve_avengers_intro'] = item.pop('Full/Reserve Avengers Intro')
+        item['full_reserve_avengers_intro'] = \
+            item.pop('Full/Reserve Avengers Intro')
         item['year'] = item.pop('Year')
         item['years_since_joining'] = item.pop('Years since joining')
         item['honorary'] = item.pop('Honorary')
@@ -77,6 +78,7 @@ def get_processed_csv(inputfile, outputfile):
 
 
 if __name__ == "__main__":
+
     get_processed_csv\
         (r'C:\msds510-midterm\data\raw\avengers.csv',
             r'C:\msds510-midterm\data\processed\avengers_processed.csv')
