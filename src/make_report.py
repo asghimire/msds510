@@ -1,3 +1,4 @@
+"""The "generate_report function generates the report of top ten avengers and writes to top_ten_appearances.md file"""
 import subprocess
 
 

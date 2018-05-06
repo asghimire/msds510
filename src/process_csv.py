@@ -1,7 +1,11 @@
+"""The process_csv module has all the codes to process a csv file"""
 import csv
 
 
 def get_processed_csv(inputfile, outputfile):
+
+    """ The "get_processed_csv" function processess the raw csv file. It changes the fieldnames
+     into python friendly names. Uses date and time function to change data and bool for Yes/No values. It does other processing also"""
 
     with open(inputfile, 'r') as csv_file:
         reader = csv.DictReader(csv_file)
@@ -62,7 +66,6 @@ def get_processed_csv(inputfile, outputfile):
 
     for item in list_r:
         item['month_joined'] = item['full_reserve_avengers_intro']
-
         item['month_joined'] = re.sub("[^a-zA-Z]+", "", item['month_joined'])
         if item['month_joined'] == '':
             item['month_joined'] = 'No Month Provided'
@@ -78,7 +81,7 @@ def get_processed_csv(inputfile, outputfile):
 
 
 if __name__ == "__main__":
-
     get_processed_csv\
         (r'C:\msds510-midterm\data\raw\avengers.csv',
             r'C:\msds510-midterm\data\processed\avengers_processed.csv')
+
