@@ -20,8 +20,8 @@ def get_top_ten_avengers(inputfile):
         new_top_ten_record.append(temp)
     return (new_top_ten_record)
 
-
- top_avengers = get_top_ten_avengers(r'C:\msds510\data\processed\avengers_processed.csv')
+top_avengers = get_top_ten_avengers(
+    r'C:\msds510-midterm\data\processed\avengers_processed.csv')
 
 
 def print_report(filepath):
@@ -40,5 +40,6 @@ def print_report(filepath):
      print(top_avengers[i]['notes'])
      print()
 
+    
 if __name__ == "__main__":
-    print_report(r'C:\msds510\data\processed\avengers_processed.csv')
+    print_report(r'C:\msds510-midterm\data\processed\avengers_processed.csv')
