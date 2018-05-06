@@ -6,7 +6,6 @@ def get_processed_csv(inputfile, outputfile):
     with open(inputfile, 'r') as csv_file:
         reader = csv.DictReader(csv_file)
         header = reader.fieldnames
-        # print(header)
         list_r = []
         for row in reader:
             data = (dict(row))
@@ -14,11 +13,13 @@ def get_processed_csv(inputfile, outputfile):
 
     fieldnames = []
     for each_field in header:
-        formatted_header = each_field.lower().replace('/', '_')
-        formatted_header = formatted_header.replace(' ', '_')
-        formatted_header = formatted_header.strip('?').strip('\n')
+
+        formatted_header = each_field.lower().\
+            replace('/', '_').replace(' ', '_').\
+            strip('?').strip('\n')
         fieldnames.append(formatted_header)
     fieldnames.append('month_joined')
+
     for item in list_r:
         item['url'] = item.pop('URL')
         item['name_alias'] = item.pop('Name/Alias')
@@ -59,6 +60,16 @@ def get_processed_csv(inputfile, outputfile):
         item['death5'] = item['death5'] == 'YES'
         item['return5'] = item['return5'] == 'YES'
 
+    for item in list_r:
+        item['month_joined'] = item['full_reserve_avengers_intro']
+
+        item['month_joined'] = re.sub("[^a-zA-Z]+", "", item['month_joined'])
+        if item['month_joined'] == '':
+            item['month_joined'] = 'No Month Provided'
+        else:
+            item['month_joined'] = strptime(item['month_joined'], '%b').tm_mon
+        print(item['month_joined'])
+
     with open(outputfile, 'w', encoding='utf-8', newline="") as csv_file_w:
         writer = csv.DictWriter(csv_file_w, fieldnames=fieldnames)
         writer.writeheader()
@@ -67,5 +78,7 @@ def get_processed_csv(inputfile, outputfile):
 
 
 if __name__ == "__main__":
-    get_processed_csv(r'C:\msds510-midterm\data\raw\avengers.csv',
-                      r'C:\msds510-midterm\data\processed\avengers_processed.csv')
+
+    get_processed_csv\
+        (r'C:\msds510-midterm\data\raw\avengers.csv',
+            r'C:\msds510-midterm\data\processed\avengers_processed.csv')
