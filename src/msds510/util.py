@@ -1,3 +1,4 @@
+"""This module contains all the utility functions needed"""
 import csv
 import re
 import datetime
@@ -5,6 +6,9 @@ from time import strptime
 
 
 def get_top_ten_avengers(inputfile):
+ """This function take input file as args
+    returns
+    top ten avengers record"""
  with open(inputfile, 'r') as csv_file:
     cr = csv.DictReader(csv_file)
     list_r = []
@@ -23,12 +27,16 @@ def get_top_ten_avengers(inputfile):
 
 
 def get_date_joined(year, month):
+ """This function takes year and month as args:
+    returns date joined """
     formatted_month = re.sub("[^a-zA-Z]+", "", month)
     formatted_month = (strptime(formatted_month, '%b').tm_mon)
     return(datetime.date(year,formatted_month,1))
 
 
 def days_since_joined(year, month):
+   """This function takes year and month as args:
+    returns days since joined """
     date_joined_input = get_date_joined(year=year, month=month)
     Todays_date = datetime.date.today()
     number_of_days_since_joined = (Todays_date-date_joined_input)
@@ -39,6 +47,8 @@ top_avengers = get_top_ten_avengers(r'C:\msds510-midterm\data\processed\avengers
 
 
 def print_report(filepath):
+ """This function takes filepath args:
+    prints top ten avengers """
  # if __name__ == "__main__":
     top_avengers = get_top_ten_avengers(filepath)
     for i in range(0, len(top_avengers)):
