@@ -1,3 +1,4 @@
+
 import csv
 import re
 import datetime
@@ -56,3 +57,4 @@ def print_report(filepath):
 
 if __name__ == "__main__":
     print_report(r'C:\msds510-midterm\data\processed\avengers_processed.csv')
+
