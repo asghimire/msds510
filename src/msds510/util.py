@@ -1,66 +1,92 @@
 """This module contains all the utility functions needed"""
-import csv
 import re
 import datetime
 from time import strptime
 
 
-def get_top_ten_avengers(inputfile):
-    """This function take input file as args
-       returns
-       top ten avengers record"""
-    with open(inputfile, 'r') as csv_file:
-        cr = csv.DictReader(csv_file)
-        list_r = [ ]
-        for row in cr:
-            data = (dict(row))
-            data[ 'appearances' ] = int(data[ 'appearances' ])
-            list_r.append(data)
-        s = sorted(list_r, key=lambda d: d[ 'appearances' ], reverse=True)
-        top_ten_avengers = s[ :10 ]
-        new_top_ten_record = [ ]
-        for i in top_ten_avengers:
-            desired_fields = [ 'url', 'name_alias', 'appearances', 'year', 'years_since_joining', 'notes' ]
-            temp = dict((k, i[ k ]) for k in desired_fields if k in i)
-            new_top_ten_record.append(temp)
-        return (new_top_ten_record)
+def to_int(input):
+    """ This function takes the input and converts them into integer
+    :arg: any input
+    :returns: integer of that input
+    """
+    try:
+        output = int(float(input))
+        return output
+    except ValueError:
+        return None
+
+
+def get_value(input, value):
+    """
+
+    :param input: takes any input dict. list, tuple or string
+    :param value: takes desired value as a argument
+    :return: function returns the position of the element if the input is list/tuple; returns value of the key if the input is dict.
+    """
+    if isinstance(input, list) or isinstance(input, tuple):
+        try:
+            element = value
+            return input.index(element)
+
+        except KeyError:
+            return None
+        except ValueError:
+            return None
+
+    elif isinstance(input, dict):
+        try:
+            for index in range(len(input)):
+                index = value
+                return input[index]
+        except KeyError:
+            return None
+
+    else:
+        return None
 
 
 def get_date_joined(year, month):
-    """This function takes year and month as args:
-       returns date joined """
+    """
+
+    :param year: takes year as argument
+    :param month: takes month as argument
+    :return: date joined
+    """
     formatted_month = re.sub("[^a-zA-Z]+", "", month)
     formatted_month = (strptime(formatted_month, '%b').tm_mon)
-    return (datetime.date(year, formatted_month, 1))
-
+    return(datetime.date(year,formatted_month,1))
 
 def days_since_joined(year, month):
-    """This function takes year and month as args:
-     returns days since joined """
+    """
+
+        :param year: takes year as argument
+        :param month: takes month as argument
+        :return: number of days since avenger joined
+        """
     date_joined_input = get_date_joined(year=year, month=month)
     Todays_date = datetime.date.today()
-    number_of_days_since_joined = (Todays_date - date_joined_input)
+    number_of_days_since_joined = (Todays_date-date_joined_input)
     return (number_of_days_since_joined)
 
+if __name__ == '__main__':
+    try:
+     print(to_int('msds'))
+     print(to_int('2.23456 '))
+     # This block lets user know if the input passed to the function is string without quotes.
+     # This will handle NameError exception
+     # when testing the function
+     print(to_int(husband))
 
-top_avengers = get_top_ten_avengers(r'C:\msds510-midterm\data\processed\avengers_processed.csv')
+    except NameError:
+        print('Your input is not valid. For strings, put it inside quotes when passing the input to the function')
 
+x = {'a': '1', 'b': '52', 'd': '6'}
+y = ['a', 'c', 'd']
+z = ('d', 'e', 'f')
 
-def print_report(filepath):
-    """This function takes filepath args prints top ten avengers """
-    top_avengers = get_top_ten_avengers(filepath)
-for i in range(0, len(top_avengers)):
-    print('#', (i + 1), '.', top_avengers[ i ][ 'name_alias' ])
-    print()
-    print('*', 'Number of Appearances', ':', top_avengers[ i ][ 'appearances' ])
-    print('*', 'Year Joined', ':', top_avengers[ i ][ 'year' ])
-    print('*', 'Years Since Joining', ':', top_avengers[ i ][ 'years_since_joining' ])
-    print('*', 'URL', ':', top_avengers[ i ][ 'url' ])
-    print()
-    print('## Notes')
-    print()
-    print(top_avengers[ i ][ 'notes' ])
-    print()
-
-if __name__ == "__main__":
-    print_report(r'C:\msds510-midterm\data\processed\avengers_processed.csv')
+print(get_value(z, 'e'))
+print (get_value(y, 'd'))
+print(get_value(x, 'b'))
+print( get_value(x, 'y'))# testing for key that doesnot exist
+print(get_value(y, 'n')) # testing for list element that doesnot exist
+print(get_value('archana','a'))# testing for when string is passed as argument
