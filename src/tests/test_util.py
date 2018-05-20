@@ -7,6 +7,12 @@ class TestUtil(unittest.TestCase):
     @data(('2.22', 2), ('.879', 0))
     @unpack
     def test_float_str(self, actual, expected):
+        """
+
+        :param actual: first argument as actual value
+        :param expected: second argument as expected value
+        :return: test pass/fail
+        """
         actual_output = to_int(actual)
         expected_output = expected
         self.assertEqual(actual_output, expected_output)
@@ -14,6 +20,12 @@ class TestUtil(unittest.TestCase):
     @data(('archana', None), ('_)(*&^%+', None))
     @unpack
     def test_invalid_str(self, actual, expected):
+        """
+
+               :param actual: first argument as actual value
+               :param expected: second argument as expected value
+               :return: test pass/fail
+               """
         actual_output = to_int(actual)
         expected_output = expected
         self.assertEqual(actual_output, expected_output)
@@ -21,6 +33,12 @@ class TestUtil(unittest.TestCase):
     @data(('2567', 2567), (7.89, 7), (1/2, 0))
     @unpack
     def test_int_input(self, actual, expected):
+        """
+
+               :param actual: first argument as actual value
+               :param expected: second argument as expected value
+               :return: test pass/fail
+               """
         actual_output = to_int(actual)
         expected_output = expected
         self.assertEqual(actual_output, expected_output)
@@ -28,6 +46,12 @@ class TestUtil(unittest.TestCase):
     @data(({'a': 1, 'b': 52, 'd': 6}, 6))
     @unpack
     def test_valid_dict_input(self, actual, expected):
+        """
+
+               :param actual: first argument as actual value
+               :param expected: second argument as expected value
+               :return: test pass/fail
+               """
         actual_output = get_value(actual, 'd')
         expected_output = expected
         self.assertEqual(actual_output, expected_output)
@@ -35,6 +59,7 @@ class TestUtil(unittest.TestCase):
     @data(({'a': 1, 'b': 52, 'd': 6}, None))
     @unpack
     def test_dict_missing_key(self, actual, expected):
+        """ This test function tests missing keys"""
         actual_output = get_value(actual, 'h')
         expected_output = expected
         self.assertEqual(actual_output, expected_output)
@@ -42,6 +67,7 @@ class TestUtil(unittest.TestCase):
     @data((['a', 'c', 'd'], 1))
     @unpack
     def test_valid_list_input(self, actual, expected):
+        """ This func test valid list input"""
         actual_output = get_value(actual, 'c')
         expected_output = expected
         self.assertEqual(actual_output, expected_output)
@@ -49,11 +75,16 @@ class TestUtil(unittest.TestCase):
     @data(([ 'a', 'c', 'd' ], None))
     @unpack
     def test_missing_list_input(self, actual, expected):
+        """ This function test missing list input
+        :arg: actual and expected
+        :return: Test pass/fail
+        """
         actual_output = get_value(actual, 'h')
         expected_output = expected
         self.assertEqual(actual_output, expected_output)
 
     def test_get_date_joined(self):
+        """ This test get date joined function"""
         actual_output_1 = get_date_joined(1963, 'may')
         actual_output_2 = get_date_joined(1999, 'aug')
         expected_output_1 = datetime.date(1963,5,1)
@@ -62,11 +93,13 @@ class TestUtil(unittest.TestCase):
         self.assertNotEqual(actual_output_2, expected_output_2)
 
     def test_get_date_joined_invalid_input(self):
+        """ Tests get date joined function for invalid inputs"""
         actual_output = get_date_joined('2003', 5)
         expected_output = None
         self.assertEqual(actual_output, expected_output)
 
     def test_get_date_joined_missing_input(self):
+        """ Tests get date joined function for missing inputs"""
         actual_output = get_date_joined(' ', 'jun')
         expected_output = None
         self.assertEqual(actual_output, expected_output)
