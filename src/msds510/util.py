@@ -52,9 +52,15 @@ def get_date_joined(year, month):
     :param month: takes month as argument
     :return: date joined
     """
-    formatted_month = re.sub("[^a-zA-Z]+", "", month)
-    formatted_month = (strptime(formatted_month, '%b').tm_mon)
-    return(datetime.date(year,formatted_month,1))
+    try:
+        year = to_int(year)
+        formatted_month = re.sub("[^a-zA-Z]+", "", month)
+        formatted_month = (strptime(formatted_month, '%b').tm_mon)
+        return(datetime.date(year,formatted_month,1))
+    except ValueError:
+        return None
+    except TypeError:
+        return None
 
 def days_since_joined(year, month):
     """
@@ -90,3 +96,4 @@ print(get_value(x, 'b'))
 print( get_value(x, 'y'))# testing for key that doesnot exist
 print(get_value(y, 'n')) # testing for list element that doesnot exist
 print(get_value('archana','a'))# testing for when string is passed as argument
+print(get_date_joined('', 'may'))

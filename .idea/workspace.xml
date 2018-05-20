@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a8f564a-d405-4f84-9601-0aeb8caa4a78" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/tests/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/tests/test_util.py" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/msds510/util.py" afterPath="$PROJECT_DIR$/src/msds510/util.py" />
+      <change beforePath="$PROJECT_DIR$/src/tests/test_util.py" afterPath="$PROJECT_DIR$/src/tests/test_util.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,11 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="util.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="util.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/msds510/util.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="83" column="19" lean-forward="true" selection-start-line="83" selection-start-column="4" selection-end-line="83" selection-end-column="19" />
+            <state relative-caret-position="1615">
+              <caret line="95" column="49" lean-forward="false" selection-start-line="95" selection-start-column="49" selection-end-line="95" selection-end-column="49" />
               <folding>
                 <element signature="e#60#69#0" expanded="true" />
               </folding>
@@ -28,11 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_util.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="test_util.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/tests/test_util.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="52" column="33" lean-forward="false" selection-start-line="52" selection-start-column="33" selection-end-line="52" selection-end-column="33" />
+            <state relative-caret-position="136">
+              <caret line="8" column="47" lean-forward="true" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -262,22 +260,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/msds510/util.py">
+    <entry file="file://$PROJECT_DIR$/src/tests/test_util.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="83" column="19" lean-forward="true" selection-start-line="83" selection-start-column="4" selection-end-line="83" selection-end-column="19" />
+        <state relative-caret-position="136">
+          <caret line="8" column="47" lean-forward="true" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
           <folding>
-            <element signature="e#60#69#0" expanded="true" />
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests/test_util.py">
+    <entry file="file://$PROJECT_DIR$/src/msds510/util.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="52" column="33" lean-forward="false" selection-start-line="52" selection-start-column="33" selection-end-line="52" selection-end-column="33" />
+        <state relative-caret-position="1615">
+          <caret line="95" column="49" lean-forward="false" selection-start-line="95" selection-start-column="49" selection-end-line="95" selection-end-column="49" />
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#60#69#0" expanded="true" />
           </folding>
         </state>
       </provider>

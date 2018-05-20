@@ -54,10 +54,22 @@ class TestUtil(unittest.TestCase):
         self.assertEqual(actual_output, expected_output)
 
     def test_get_date_joined(self):
-        actual_output = get_date_joined(1943, 'may')
-        expected_output = datetime.date(1943,5,1)
+        actual_output_1 = get_date_joined(1963, 'may')
+        actual_output_2 = get_date_joined(1999, 'aug')
+        expected_output_1 = datetime.date(1963,5,1)
+        expected_output_2 = datetime.date(1999, 6,1)
+        self.assertEqual(actual_output_1, expected_output_1)
+        self.assertNotEqual(actual_output_2, expected_output_2)
+
+    def test_get_date_joined_invalid_input(self):
+        actual_output = get_date_joined('2003', 5)
+        expected_output = None
         self.assertEqual(actual_output, expected_output)
 
+    def test_get_date_joined_missing_input(self):
+        actual_output = get_date_joined(' ', 'jun')
+        expected_output = None
+        self.assertEqual(actual_output, expected_output)
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
