@@ -1,8 +1,9 @@
 import datetime
-from src.msds510.util import get_date_joined, days_since_joined
+from src.msds510.utils.date import*
+from src.msds510.utils.conversion import*
 
 
-class Avenger(object):
+class Avenger:
     def __init__(self, record):
         """
         Initializes the object with a dictionary-based record.
@@ -39,7 +40,7 @@ class Avenger(object):
             character appeared in as of April 30
 
         """
-        int_appearances = int(self.record.get('appearances'))
+        int_appearances = to_int(self.record.get('appearances'))
         return int_appearances
 
     def is_current(self):
@@ -113,6 +114,20 @@ class Avenger(object):
         formatted_notes = self.record.get('notes').strip('\n').strip(' ')
         return formatted_notes
 
+    def to_markdown(self):
+        print('Name/Alias: {}'.format(hank_pym.name_alias()))
+        print('URL: {}'.format(hank_pym.url())),
+        print('Appearances: {}'.format(hank_pym.appearances()))
+        print('Is Current?: {}'.format(hank_pym.is_current()))
+        print('Gender: {}'.format(hank_pym.gender()))
+        print('Year Joined: {}'.format(hank_pym.year()))
+        print('Date Joined: {}'.format(hank_pym.date_joined()))
+        print('Days Since Joined: {}'.format(hank_pym.days_since_joining()))
+        print('Years Since Joined: {}'.format(hank_pym.years_since_joining()))
+        print('Notes: {}'.format(hank_pym.notes()))
+        print('__str__: {}'.format(hank_pym.__str__()))
+        print('__repr__: {}'.format(hank_pym.__repr__()))
+
     def __str__(self):
         """
         Returns:
@@ -129,6 +144,8 @@ class Avenger(object):
         return " Avenger:%s " % (self.record)
 
 
+
+
 if __name__ == '__main__':
     pym_record = {
         'appearances': '1269',
@@ -142,8 +159,7 @@ if __name__ == '__main__':
         'gender': 'MALE',
         'honorary': 'Full',
         'name_alias': 'Henry Jonathan "Hank" Pym',
-        'notes': 'Merged with Ultron in Rage of '
-                 'Ultron Vol. 1. A funeral was held. \n',
+        'notes': 'Merged with Ultron in Rage of Ultron Vol. 1. A funeral was held.',
         'probationary_introl': '',
         'return1': 'NO',
         'return2': '',
@@ -155,16 +171,6 @@ if __name__ == '__main__':
         'years_since_joining': '52'
     }
 
-hank_pym = Avenger(pym_record)
-print('Name/Alias: {}'.format(hank_pym.name_alias()))
-print('URL: {}'.format(hank_pym.url()))
-print('Appearances: {}'.format(hank_pym.appearances()))
-print('Is Current?: {}'.format(hank_pym.is_current()))
-print('Gender: {}'.format(hank_pym.gender()))
-print('Year Joined: {}'.format(hank_pym.year()))
-print('Date Joined: {}'.format(hank_pym.date_joined()))
-print('Days Since Joined: {}'.format(hank_pym.days_since_joining()))
-print('Years Since Joined: {}'.format(hank_pym.years_since_joining()))
-print('Notes: {}'.format(hank_pym.notes()))
-print('__str__: {}'.format(hank_pym.__str__()))
-print('__repr__: {}'.format(hank_pym.__repr__()))
+    hank_pym = Avenger(pym_record)
+    hank_pym.to_markdown()
+
