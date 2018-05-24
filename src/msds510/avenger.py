@@ -1,3 +1,6 @@
+"""
+This module implements the avenger class
+"""
 import datetime
 from src.msds510.utils.date import*
 from src.msds510.utils.conversion import*
@@ -114,19 +117,21 @@ class Avenger:
         formatted_notes = self.record.get('notes').strip('\n').strip(' ')
         return formatted_notes
 
+
     def to_markdown(self):
-        print('Name/Alias: {}'.format(hank_pym.name_alias()))
-        print('URL: {}'.format(hank_pym.url())),
-        print('Appearances: {}'.format(hank_pym.appearances()))
-        print('Is Current?: {}'.format(hank_pym.is_current()))
-        print('Gender: {}'.format(hank_pym.gender()))
-        print('Year Joined: {}'.format(hank_pym.year()))
-        print('Date Joined: {}'.format(hank_pym.date_joined()))
-        print('Days Since Joined: {}'.format(hank_pym.days_since_joining()))
-        print('Years Since Joined: {}'.format(hank_pym.years_since_joining()))
-        print('Notes: {}'.format(hank_pym.notes()))
-        print('__str__: {}'.format(hank_pym.__str__()))
-        print('__repr__: {}'.format(hank_pym.__repr__()))
+        print(Avenger.name_alias())
+        # print('Name/Alias: {}'.format(hank_pym.name_alias()))
+        # print('URL: {}'.format(hank_pym.url())),
+        # print('Appearances: {}'.format(hank_pym.appearances()))
+        # print('Is Current?: {}'.format(hank_pym.is_current()))
+        # print('Gender: {}'.format(hank_pym.gender()))
+        # print('Year Joined: {}'.format(hank_pym.year()))
+        # print('Date Joined: {}'.format(hank_pym.date_joined()))
+        # print('Days Since Joined: {}'.format(hank_pym.days_since_joining()))
+        # print('Years Since Joined: {}'.format(hank_pym.years_since_joining()))
+        # print('Notes: {}'.format(hank_pym.notes()))
+        # print('__str__: {}'.format(hank_pym.__str__()))
+        # print('__repr__: {}'.format(hank_pym.__repr__()))
 
     def __str__(self):
         """
@@ -142,8 +147,6 @@ class Avenger:
             str: String representation of object.  Useful for debugging.
         """
         return " Avenger:%s " % (self.record)
-
-
 
 
 if __name__ == '__main__':

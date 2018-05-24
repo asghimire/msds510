@@ -34,9 +34,8 @@ class TestAvenger(unittest.TestCase):
         self.assertEqual(actual_output, expected_output)
 
     def test_is_current(self):
-        actual_output = self.hank_pym.is_current()
-        expected_output = False
-        self.assertEqual(actual_output, expected_output)
+        actual_output =str(self.hank_pym.is_current())
+        self.assertTrue(actual_output)
 
     def test_gender(self):
         actual_output = self.hank_pym.gender()
