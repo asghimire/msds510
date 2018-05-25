@@ -84,7 +84,7 @@ class Avenger:
             """
         year = int(self.record.get('year'))
         date_joined = get_date_joined(year,
-                                      self.record.get('full_reserve_avengers_intro')
+                                        self.record.get('full_reserve_avengers_intro')
                                       )
         return date_joined
 
@@ -117,21 +117,20 @@ class Avenger:
         formatted_notes = self.record.get('notes').strip('\n').strip(' ')
         return formatted_notes
 
-
     def to_markdown(self):
-        print(Avenger.name_alias())
-        # print('Name/Alias: {}'.format(hank_pym.name_alias()))
-        # print('URL: {}'.format(hank_pym.url())),
-        # print('Appearances: {}'.format(hank_pym.appearances()))
-        # print('Is Current?: {}'.format(hank_pym.is_current()))
-        # print('Gender: {}'.format(hank_pym.gender()))
-        # print('Year Joined: {}'.format(hank_pym.year()))
-        # print('Date Joined: {}'.format(hank_pym.date_joined()))
-        # print('Days Since Joined: {}'.format(hank_pym.days_since_joining()))
-        # print('Years Since Joined: {}'.format(hank_pym.years_since_joining()))
-        # print('Notes: {}'.format(hank_pym.notes()))
-        # print('__str__: {}'.format(hank_pym.__str__()))
-        # print('__repr__: {}'.format(hank_pym.__repr__()))
+        """ This generates the markdown report"""
+        print('Name/Alias: {}'.format(hank_pym.name_alias()))
+        print('URL: {}'.format(hank_pym.url())),
+        print('Appearances: {}'.format(hank_pym.appearances()))
+        print('Is Current?: {}'.format(hank_pym.is_current()))
+        print('Gender: {}'.format(hank_pym.gender()))
+        print('Year Joined: {}'.format(hank_pym.year()))
+        print('Date Joined: {}'.format(hank_pym.date_joined()))
+        print('Days Since Joined: {}'.format(hank_pym.days_since_joining()))
+        print('Years Since Joined: {}'.format(hank_pym.years_since_joining()))
+        print('Notes: {}'.format(hank_pym.notes()))
+        print('__str__: {}'.format(hank_pym.__str__()))
+        print('__repr__: {}'.format(hank_pym.__repr__()))
 
     def __str__(self):
         """
@@ -176,4 +175,3 @@ if __name__ == '__main__':
 
     hank_pym = Avenger(pym_record)
     hank_pym.to_markdown()
-

@@ -1,5 +1,4 @@
 import unittest
-import datetime
 from src.msds510.avenger import Avenger
 from src.process_csv import*
 from src.msds510.utils.conversion import *
@@ -12,8 +11,8 @@ with open(output_file, 'r') as csv_file:
     reader = csv.DictReader(csv_file)
     record_list = []
     for row in reader:
-       data = (dict(row))
-       record_list.append(data)
+        data = (dict(row))
+        record_list.append(data)
 
 class TestAvenger(unittest.TestCase):
     for item_index in range(len(record_list)):
@@ -66,7 +65,6 @@ class TestAvenger(unittest.TestCase):
         actual_output = self.hank_pym.notes()
         expected_output = self.pym_record.get('notes')
         self.assertEqual(actual_output, expected_output)
-
 
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestAvenger)

@@ -1,7 +1,4 @@
 """This module contains all the utility functions needed"""
-import re
-import datetime
-from time import strptime
 
 
 def to_int(input):
@@ -21,7 +18,8 @@ def get_value(input, value):
 
     :param input: takes any input dict. list, tuple or string
     :param value: takes desired value as a argument
-    :return: function returns the position of the element if the input is list/tuple; returns value of the key if the input is dict.
+    :return: function returns the position of the element
+    if the input is list/tuple; returns value of the key if the input is dict.
     """
     if isinstance(input, list) or isinstance(input, tuple):
         try:
@@ -49,16 +47,19 @@ if __name__ == '__main__':
     try:
         print(to_int('msds'))
         print(to_int('2.23456 '))
-        # This block lets user know if the input passed to the function is string without quotes.
+        # This block lets user know if the input passed
+        # to the function is string without quotes.
         # This will handle NameError exception
         # when testing the function
         print(to_int(husband))
 
     except NameError:
-        print('Your input is not valid. For strings, put it inside quotes when passing the input to the function')
+        print('Your input is not valid. For strings, put it inside'
+              ' quotes when passing the input to the function'
+              )
 
         x = {'a': '1', 'b': '52', 'd': '6'}
-        y = [ 'a', 'c', 'd' ]
+        y = ['a', 'c', 'd']
         z = ('d', 'e', 'f')
 
         print(get_value(z, 'e'))
@@ -66,4 +67,4 @@ if __name__ == '__main__':
         print(get_value(x, 'b'))
         print(get_value(x, 'y'))  # testing for key that doesnot exist
         print(get_value(y, 'n'))  # testing for list element that doesnot exist
-        print(get_value('archana', 'a'))  # testing for when string is passed as argument
+        print(get_value('arc', 'a'))
