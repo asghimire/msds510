@@ -1,5 +1,7 @@
 """The process_csv module has all the codes to process a csv file"""
 import csv
+from time import strptime
+import re
 
 
 def get_processed_csv(inputfile, outputfile):
@@ -71,14 +73,14 @@ def get_processed_csv(inputfile, outputfile):
             item['month_joined'] = 'No Month Provided'
         else:
             item['month_joined'] = strptime(item['month_joined'], '%b').tm_mon
-        print(item['month_joined'])
+
 
     with open(outputfile, 'w', encoding='utf-8', newline="") as csv_file_w:
         writer = csv.DictWriter(csv_file_w, fieldnames=fieldnames)
         writer.writeheader()
         for each_row in list_r:
             writer.writerow(each_row)
-
+        return outputfile
 
 if __name__ == "__main__":
     get_processed_csv\
